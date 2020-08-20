@@ -61,12 +61,12 @@ class image_gui():
         # ファイル削除処理
         # self.file_del()
         # 参照ボタン配置
-        button0 = Button(root, text=u'参照', command=self.button0_clicked)
+        button0 = Button(root, text=u'Select', command=self.button0_clicked)
         button0.grid(row=0, column=1)
         button0.place(x=500, y=12)
 
         # 閉じるボタン
-        close1 = Button(root, text=u'閉じる', command=self.close_clicked)
+        close1 = Button(root, text=u'Close', command=self.close_clicked)
         close1.grid(row=0, column=3)
         close1.place(x=570, y=12)
 
@@ -82,7 +82,7 @@ class image_gui():
     ########################
     def close_clicked(self):
         # メッセージ出力
-        res = messagebox.askokcancel("確認", "フォームを閉じますか？")
+        res = messagebox.askokcancel("OK", "Do you close form?")
         #　フォームを閉じない場合
         if res != True:
             # 処理終了
@@ -110,17 +110,17 @@ class image_gui():
         self.file1.set(self.filepath)
 
         # 顔モザイク実施するボタンの生成と配置
-        self.button2 = Button(root, text=u"グレースケール",
+        self.button2 = Button(root, text=u"Grayscale",
                               command=self.grayscale_clicked, width=10)
         self.button2.grid(row=0, column=3)
         self.button2.place(x=canvas_width + 50, y=90)
 
-        self.button3 = Button(root, text=u"射影変換",
+        self.button3 = Button(root, text=u"Projection",
                               command=self.projection_clicked, width=10)
         self.button3.grid(row=0, column=3)
         self.button3.place(x=canvas_width + 50, y=120)
 
-        self.button4 = Button(root, text=u"モザイク",
+        self.button4 = Button(root, text=u"Mosaic",
                               command=self.mosaic_clicked, width=10)
         self.button4.grid(row=0, column=3)
         self.button4.place(x=canvas_width + 50, y=150)
@@ -130,13 +130,13 @@ class image_gui():
         self.slider.place(x=canvas_width + 30, y=230)
         self.slider.set(0.1)
 
-        self.button5 = Button(root, text=u"反射除去",
+        self.button5 = Button(root, text=u"Reflection",
                               command=self.remove_reflection_clicked, width=10)
         self.button5.grid(row=0, column=3)
         self.button5.place(x=canvas_width + 50, y=180)
 
         # 画像を保存を実施するボタンの生成と配置
-        self.button6 = Button(root, text=u"画像保存",
+        self.button6 = Button(root, text=u"Save",
                               command=self.save_clicked, width=10)
         self.button6.grid(row=0, column=3)
         self.button6.place(x=665, y=45)
@@ -208,7 +208,7 @@ class image_gui():
             self.mosaic_unbind()
         output_canvas.delete("all")
 
-        messagebox.showinfo('4点の指定', "左上，左下，右上，右下の順にクリックしてください．")
+        messagebox.showinfo('4 points', "Please click on LeftUp，LeftDown，RightUp，RightDown.")
         img = cv2.imread(self.filepath)
         self.clicked_num = 0
         self.points = np.zeros(8, dtype=np.float32)
