@@ -18,7 +18,7 @@ RUN pip install --upgrade setuptools
 
 COPY requirements.txt ./
 COPY edit_app_v3.py ./
-COPY Parrot.png ./
+COPY Parrots.png ./
 
 RUN pip install --no-cache-dir -r requirements.txt
 
